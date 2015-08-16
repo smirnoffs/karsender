@@ -6,7 +6,7 @@ __author__ = 'Sergey Smirnov <smirnoffs@gmail.com>'
 
 class Config:
     OPENCART_DB_HOST = os.getenv('OPENCART_DB_HOST')
-    OPENCART_DB_PORT = os.getenv('OPENCART_DB_PORT')
+    OPENCART_DB_PORT = os.getenv('OPENCART_DB_PORT', 3306)
     OPENCART_DB_USER = os.getenv('OPENCART_DB_USER')
     OPENCART_DB_PSWR = os.getenv('OPENCART_DB_PSWR')
     OPENCART_DB_DATABASE = os.getenv('OPENCART_DB_DATABASE')

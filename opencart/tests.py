@@ -4,7 +4,8 @@ from unittest.mock import patch
 
 from karsender import Config
 
-from opencart.services import get_last_success_import, get_collection
+from opencart.services import get_last_success_import, get_last_orders
+from karsender.database import get_collection
 
 __author__ = 'Sergey Smirnov <smirnoffs@gmail.com>'
 
@@ -19,11 +20,11 @@ mock = patch.object(Config, 'ORDERS_COLLECTION', 'test_collection')
 
 
 class TestOrderExport(unittest.TestCase):
-    # def test_get_last_orders(self):
-    #     orders = get_last_orders()
-    #     self.assertIsNotNone(orders)
-    #     self.assertGreater(len(orders), 0)
-    #     self.assertTrue(all(isinstance(order, Order) for order in orders))
+    def test_get_last_orders(self):
+        orders = get_last_orders()
+        # self.assertIsNotNone(orders)
+        # self.assertGreater(len(orders), 0)
+        # self.assertTrue(all(isinstance(order, Order) for order in orders))
 
     def setUp(self):
         mock.start()
