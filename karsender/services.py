@@ -35,6 +35,7 @@ def validate_email(email):
     mx_hosts = get_mx_ip(hostname)
     if mx_hosts:
         return True
+    return False
 
 
 def validate_emails():
@@ -43,4 +44,7 @@ def validate_emails():
     for order in collection.find({'email_validated': {"$exists": False}}):
         email = order['email']
         is_valid = validate_email(email)
+        order['email_validated'] = True
+        order['email_valid'] = is_valid
+        collection.save(order)
         logger.info('{email} is {result}'.format(email=email, result='valid' if is_valid else 'non valid'))
