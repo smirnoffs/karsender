@@ -14,3 +14,5 @@ class Config:
     MONGO_DB_HOST = os.getenv('MONGO_DB_HOST', 'localhost')
     MONGO_DB_DATABASE = os.getenv('MONGO_DB_DATABASE', 'karsend')
     ORDERS_COLLECTION = 'orders'
+    STATUSES_COLLECTION = 'statuses'
+    CUSTOMERS_COLLECTION = 'customers'

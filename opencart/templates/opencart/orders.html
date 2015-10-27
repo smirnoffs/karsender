@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Последний импорт</title>
+</head>
+<body>
+
+<p>Последний импорт: {{ last_import_date|date:"d M Y, H:m" }}.</p>
+<p>Всего {{ orders_imported }} заказов импортировано.</p>
+
+<form action="{% url 'opencart:import_orders' %}" method="post">{% csrf_token %}
+    <button name="import_new_orders">Импортировать новые заказы из Opencart</button>
+</form>
+
+<h2>Последние 5 импортированых:</h2>
+{% for order in last_imported %}
+    <p><h4>Заказ#{{ order.order_number }} ({{ order.date|date:"d M Y H:m" }})</h4></p>
+    <p>{{ order.firstname }} {{ order.lastname }} <{{ order.email }}></p>
+    <p>Город: {{ order.shipping_city }}</p>
+    <p>Сумма: {{ order.total }} грн.</p>
+{% endfor %}
+</body>
+</html>

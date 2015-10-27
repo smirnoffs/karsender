@@ -33,7 +33,7 @@ class TestOrderExport(unittest.TestCase):
     def test_get_last_success_import(self):
         last_import = get_last_success_import()
         self.assertIsInstance(last_import, datetime.datetime)
-        self.assertEqual(last_import, datetime.datetime(year=1980, month=1, day=1))
+        self.assertAlmostEqual(last_import, datetime.datetime(year=1980, month=1, day=1))
         success_date = datetime.datetime(year=2014, month=2, day=12, hour=12, minute=4, second=14)
         self.collection.insert_one({'success': True, 'datetime': success_date})
         self.collection.insert_one({'success': False, 'datetime': datetime.datetime.now()})

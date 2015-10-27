@@ -48,3 +48,10 @@ def validate_emails():
         order['email_valid'] = is_valid
         collection.save(order)
         logger.info('{email} is {result}'.format(email=email, result='valid' if is_valid else 'non valid'))
+
+
+def copy_valid_opencart_customers():
+    emails = get_collection('orders').distinct('email').find({'email_valid': True})
+    for email in emails:
+        customer = {}
+        orderN

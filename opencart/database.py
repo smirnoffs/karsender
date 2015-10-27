@@ -9,8 +9,6 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 from karsender import Config
 
-__author__ = 'Sergey Smirnov <smirnoffs@gmail.com>'
-
 db = SQLAlchemy()
 engine = create_engine('mysql+pymysql://{user}:{password}@{server}/{db}?charset=utf8'.format(
     user=Config.OPENCART_DB_USER,
